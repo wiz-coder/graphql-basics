@@ -1,7 +1,7 @@
 import {GraphQLID,GraphQLObjectType,GraphQLString,GraphQLInt,GraphQLList} from "graphql"
 import _ from "lodash"
 import book from "./bookSchema"
-import {books} from "./rootSchema"
+import BOOK from "../models/book"
 
 
 const AuthorType = new GraphQLObjectType({
@@ -19,7 +19,8 @@ const AuthorType = new GraphQLObjectType({
         books:{
             type: new GraphQLList(book),
             resolve(parent,args){
-                return _.filter(books,{authorID:parent.id})
+                // return _.filter(books,{authorID:parent.id})
+                return BOOK.find({authorID:parent.id})
             }
         }
     })
