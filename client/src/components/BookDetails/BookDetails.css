@@ -1,0 +1,14 @@
+.book-details{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-color: #AD1457;
+    padding-left: 40px;
+    color: yellow;
+}
+span{
+    color:wheat;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+}

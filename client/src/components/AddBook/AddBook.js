@@ -2,14 +2,22 @@ import {useState} from "react"
 import {useMutation,useQuery} from "@apollo/client"
 
 //importing authors query
-import {getAuthorsQuery} from "../../queries/queries"
+import {getAuthorsQuery,getBooksQuery} from "../../queries/queries"
 
+//import addBook mutation
+import {addBookMutation} from "../../mutations/addBookMutation"
+
+//importing css for this component
+import "./AddBook.css"
 
 const AddBook = (props) => {
     const [name,setName] = useState('')
     const [genre,setGenre] = useState('')
-    const [authorID,setAuthorID] = useState('')
+    const [authorID,setAuthorID] = useState()
     const {loading,error,data} = useQuery(getAuthorsQuery)
+    const [addNewBook, {}] = useMutation(addBookMutation,{
+        refetchQueries:mutationResult=>[{query:getBooksQuery}]
+    })
     const nameChangeHandler = e => {
         setName(e.target.value)
     }
@@ -21,7 +29,13 @@ const AddBook = (props) => {
     }
     const addBookHandler = e => {
         e.preventDefault()
-        console.log(e)
+        // console.log(e,name,genre,authorID)
+        addNewBook({variables:{name,genre,authorID}})
+        // addNewBook(name,genre,authorID)
+        // console.log(e.target.elements)
+        e.target.elements.bookname.value = ""
+        e.target.elements.genre.value = ""
+        e.target.elements.authorID.value = ""
     }
     if(loading) return <p>loading authors ...</p>
     else if(error) return <p>Error: {error.message}</p>
@@ -41,7 +55,7 @@ const AddBook = (props) => {
             <div className="field">
             <label>Author:</label>
             <select name="authorID" onChange={authorIDChangeHandler}>
-            <option>Select Author</option>
+            <option value="">Select Author</option>
             {allAuthors}
             </select>
             </div>
