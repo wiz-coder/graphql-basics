@@ -1,0 +1,21 @@
+#book-list{
+    padding:0;
+    display: inline-block;
+    
+}
+
+
+
+#book-list li{
+    padding: 10px;
+    margin: 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 2px solid pink;
+    color: #880E4F;
+    list-style: none;
+    width: fit-content;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    display: inline-block;
+    cursor: pointer;
+}

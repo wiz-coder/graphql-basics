@@ -1,0 +1,47 @@
+form{
+    background: white;
+    position: fixed;
+    bottom:0;
+    left:0;
+    
+    height: 25vh;
+}
+
+.field{
+
+    color: #444;
+    margin-right: 10px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+}
+.field > input,
+.field > select{
+    
+    margin-left: 10px;
+    height: 20px;
+    text-align: center;
+   margin-top: 8px;
+   width: 12rem;
+   
+   box-sizing: border-box;
+}
+.field label{
+    text-align: right;
+    padding-top: 8px;
+}
+
+button{
+    position: relative;
+    margin: 4px;
+    height:50px;
+    width:50px;
+    background-color: teal;
+    border-radius: 50%;
+    color: white;
+    outline: none;
+    border: 2px solid white;
+   font-size: xx-large;
+}
